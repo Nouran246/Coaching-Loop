@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coaching Loop Hub </title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="grid-overlay"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">◆</span>
+    <span class="brand-name">Coaching Loop Hub</span>
+  </div>
+  <div class="topbar-status">
+    <span class="status-dot idle" id="global-status-dot"></span>
+    <span id="global-status-text">STANDBY</span>
+  </div>
+</header>
+
+<main class="console">
+
+  <section class="switchboard" role="tablist" aria-label="Choose station">
+    <button class="switch-tile" id="tile-qa" role="tab" aria-selected="false" data-mode="qa">
+      <span class="switch-led"></span>
+      <span class="switch-index">01</span>
+      <span class="switch-label">QA Team Member</span>
+      <span class="switch-caption">upload QA documents into our system</span>
+    </button>
+
+    <button class="switch-tile" id="tile-agent" role="tab" aria-selected="false" data-mode="agent">
+      <span class="switch-led"></span>
+      <span class="switch-index">02</span>
+      <span class="switch-label">Agent</span>
+      <span class="switch-caption">Talk to our Coaching Loop Hub</span>
+    </button>
+  </section>
+
+  <section class="panel-well">
+
+    <!-- Empty state -->
+    <div class="panel" id="panel-empty" data-active="true">
+      <div class="empty-state">
+        <span class="empty-mark">·</span>
+        <p>Pick a station above to open it.</p>
+      </div>
+    </div>
+
+    <!-- QA panel -->
+    <div class="panel" id="panel-qa" data-active="false">
+      <div class="panel-head">
+        <h2>QA Team Member</h2>
+        <p>Upload the document here . PDF or Word files only.</p>
+      </div>
+
+      <div class="dropzone" id="qa-dropzone" tabindex="0" role="button" aria-label="Upload document">
+        <input type="file" id="qa-file-input" accept=".pdf,.docx" hidden>
+        <span class="dropzone-icon">↑</span>
+        <span class="dropzone-primary">Drop a file here, or click to browse</span>
+        <span class="dropzone-secondary">.pdf or .docx · up to 25MB</span>
+      </div>
+
+      <ul class="file-list" id="qa-file-list"></ul>
+
+      <div class="panel-footer">
+        <span class="panel-footer-note" id="qa-note">No file uploaded yet.</span>
+      </div>
+    </div>
+
+    <!-- Agent panel -->
+    <div class="panel" id="panel-agent" data-active="false">
+      <div class="panel-head">
+        <h2>Agent</h2>
+        <p>Enter your company Work ID to start a session / ask questions.</p>
+      </div>
+
+      <div class="field-group">
+        <label for="agent-id-input">Work ID</label>
+        <input type="text" id="agent-id-input" placeholder="e.g. EMP-1042" autocomplete="off" spellcheck="false">
+      </div>
+
+      <div class="agent-actions">
+        <button class="btn-primary" id="agent-connect-btn">Connect</button>
+        <button class="btn-secondary" id="agent-end-btn" disabled>End session</button>
+      </div>
+
+      <div class="agent-readout" id="agent-readout">
+        <div class="readout-row">
+          <span class="readout-label">Connection</span>
+          <span class="readout-value" id="agent-conn-value">Not connected</span>
+        </div>
+        <div class="readout-row">
+          <span class="readout-label">Mode</span>
+          <span class="readout-value" id="agent-mode-value">—</span>
+        </div>
+      </div>
+
+      <div class="transcript" id="agent-transcript" aria-live="polite"></div>
+    </div>
+
+  </section>
+
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>
