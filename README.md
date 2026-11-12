@@ -1,8 +1,22 @@
+
+
+
+
+
+
+
 # 🎧 AI-Powered Personalized Coaching Loop
 
 **A multi-agent system that turns QA feedback into hands-on practice for customer-service agents.**
 
 Built during the Konecta GenAI internship program. The system identifies an agent's weaknesses, coaches them, runs a **voice roleplay** based on a realistic scenario, evaluates the result, and decides the next step, closing the loop between feedback and improvement.
+
+https://github.com/user-attachments/assets/92a01c07-165c-41f1-9869-96160832ecee
+
+https://github.com/user-attachments/assets/7c098a05-884e-4028-b565-004ba4d7677f
+
+
+
 
 ![Multi-Agent](https://img.shields.io/badge/architecture-multi--agent-blue)
 ![Voice](https://img.shields.io/badge/voice-ElevenLabs-black)
